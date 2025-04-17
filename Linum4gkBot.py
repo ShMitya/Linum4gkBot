@@ -9,7 +9,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackQueryHandler
 import matplotlib.pyplot as plt
@@ -492,14 +491,21 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
 
 def setup_driver():
     options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    
+    options.headless = True
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-infobars")
+    options.add_argument("--disable-browser-side-navigation")
+
+    # Явно указываем путь к Chrome
+    options.binary_location = "/usr/bin/google-chrome"
+
     driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager(version="114.0.5735.90").install()),
-    options=options
-)
+        service=Service("/usr/local/bin/chromedriver"),
+        options=options
+    )
 
     driver.get("https://rating.chgk.info/login")
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "_username")))
