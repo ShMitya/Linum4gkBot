@@ -10,8 +10,9 @@ RUN curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_am
     rm chrome.deb
 
 # Устанавливаем ChromeDriver той же версии
-RUN CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+') && \
-    DRIVER_URL="https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip" && \
+RUN CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+\.\d+') && \
+    DRIVER_VERSION=$(echo $CHROME_VERSION | cut -d '.' -f 1-3) && \
+    DRIVER_URL="https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" && \
     curl -sSL "$DRIVER_URL" -o /tmp/chromedriver.zip && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
     chmod +x /usr/local/bin/chromedriver && \
