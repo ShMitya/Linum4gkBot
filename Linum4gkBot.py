@@ -61,7 +61,7 @@ def parse_tournament_data(tournament_id):
     driver.get(url)
     time.sleep(3)
 
-    WebDriverWait(driver, 10).until(
+    rWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "teams_table_new"))
     )
 
@@ -494,10 +494,10 @@ def setup_driver():
     options.headless = True
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--disable-infobars")
-    options.add_argument("--disable-browser-side-navigation")
+    #options.add_argument("--disable-gpu")
+    #options.add_argument("--disable-extensions")
+    #options.add_argument("--disable-infobars")
+    #options.add_argument("--disable-browser-side-navigation")
 
     # Явно указываем путь к Chrome
     options.binary_location = "/usr/bin/google-chrome"
