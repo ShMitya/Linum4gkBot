@@ -21,4 +21,4 @@ ENV PASSWORD=""
 ENV ALLOWED_USERS=""
 
 # Запуск бота
-CMD ["python", "bot.py"]
+CMD ["python", "Linum4gkBot.py.py"]
