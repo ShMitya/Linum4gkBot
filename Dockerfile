@@ -18,6 +18,9 @@ RUN DRIVER_VERSION="114.0.5735.90" && \
     chmod +x /usr/local/bin/chromedriver && \
     rm /tmp/chromedriver.zip
 
+# Папка temp
+RUN mkdir -p /tmp
+
 WORKDIR /app
 COPY . /app
 
