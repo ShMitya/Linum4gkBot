@@ -493,7 +493,10 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
 def setup_driver():
     options = Options()
     options.headless = True
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager(version="114.0.5735.90").install()),
+    options=options
+)
 
     driver.get("https://rating.chgk.info/login")
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "_username")))
