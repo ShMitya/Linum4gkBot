@@ -492,7 +492,10 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
 
 def setup_driver():
     options = Options()
-    options.headless = True
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    
     driver = webdriver.Chrome(
     service=Service(ChromeDriverManager(version="114.0.5735.90").install()),
     options=options
