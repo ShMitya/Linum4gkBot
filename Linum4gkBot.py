@@ -491,7 +491,8 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
 
 def setup_driver():
     options = Options()
-    options.headless = True
+    #options.headless = True
+    options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
@@ -500,7 +501,7 @@ def setup_driver():
     options.add_argument("--disable-browser-side-navigation")
     options.add_argument("--remote-debugging-port=9222")
     options.add_argument("--window-size=1920,1080")
-    options.add_argument("--disable-dev-tools")
+    #options.add_argument("--disable-dev-tools")
 
 
     # Явно указываем путь к Chrome
