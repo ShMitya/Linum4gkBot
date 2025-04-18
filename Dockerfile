@@ -1,5 +1,9 @@
 FROM python:3.11-slim
 
+# Копируем код и модель
+COPY . /app
+WORKDIR /app
+
 # Устанавливаем зависимости
 RUN apt-get update && apt-get install -y wget unzip curl gnupg libglib2.0-0 libnss3 libgconf-2-4 libfontconfig1 libxss1 libappindicator3-1 libasound2 libxtst6 libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcb-dri3-0 libgbm1 xdg-utils --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
