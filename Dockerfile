@@ -29,10 +29,6 @@ ENV TMPDIR=/tmp
 # Установка Python-зависимостей
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем код и модель
-COPY . /app
-WORKDIR /app
-
 # Переменные окружения
 ENV BOT_TOKEN=""
 ENV EMAIL=""
