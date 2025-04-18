@@ -533,7 +533,7 @@ except Exception as e:
 
 # === Telegram Bot Start ===
 if __name__ == "__main__":
-    driver = setup_driver()
+    driver = setup_driver(EMAIL, PASSWORD)
 
     model = load("lasso_loocv_model.joblib")  # путь к модели
     scaler = load("scaler.joblib")            # путь к scaler
