@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y wget unzip curl gnupg libglib2.0-0 libn
     rm -rf /var/lib/apt/lists/*
 
 # Установка Google Chrome
-#RUN apt-get update && apt-get install -y wget gnupg unzip curl && \
-#    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-#    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
-#    apt-get update && apt-get install -y google-chrome-stable
+RUN apt-get update && apt-get install -y wget gnupg unzip curl && \
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get update && apt-get install -y google-chrome-stable
 
 # Устанавливаем совместимую версию ChromeDriver для Chrome 135
 RUN curl -sSL "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/135.0.7049.95/linux64/chromedriver-linux64.zip" \
@@ -29,13 +29,6 @@ RUN curl -sSL "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/135.0
 #    unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
 #    chmod +x /usr/local/bin/chromedriver && \
 #    rm /tmp/chromedriver.zip
-
-# Установка ChromeDriver 135.0.7049.0 — под версию Chrome 135.x
-RUN curl -sSL "https://chromedriver.storage.googleapis.com/135.0.7049.0/chromedriver_linux64.zip" \
-    -o /tmp/chromedriver.zip && \
-    unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
-    chmod +x /usr/local/bin/chromedriver && \
-    rm /tmp/chromedriver.zip
 
 # Папка temp
 RUN mkdir -p /tmp && chmod -R 1777 /tmp
