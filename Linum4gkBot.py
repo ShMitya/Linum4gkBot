@@ -540,7 +540,7 @@ def setup_driver():
 
 # === Telegram Bot Start ===
 if __name__ == "__main__":
-    driver = setup_driver(EMAIL, PASSWORD)
+    driver = setup_driver()
 
     model = load("lasso_loocv_model.joblib")  # путь к модели
     scaler = load("scaler.joblib")            # путь к scaler
