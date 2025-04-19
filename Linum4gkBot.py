@@ -21,6 +21,12 @@ import time
 import os
 from datetime import datetime
 
+
+EMAIL = os.environ.get("EMAIL")
+PASSWORD = os.environ.get("PASSWORD")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+ALLOWED_USES = os.environ.get("ALLOWED_USERS")
+
 PERFORMANCE = range(1)
 
 # === Shared Selenium driver and buffer ===
@@ -490,8 +496,7 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
         await update.message.reply_text(f"⚠️ Ошибка: {e}")
 
 def setup_driver():
-    global EMAIL, PASSWORD
-    
+        
     options = Options()
     #options.headless = True
     options.add_argument("--headless=new")
