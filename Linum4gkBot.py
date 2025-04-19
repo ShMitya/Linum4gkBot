@@ -517,18 +517,18 @@ def setup_driver():
     driver.get("https://rating.chgk.info/login")
     print(driver.page_source)
     
-try:
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "_username")))
-    driver.find_element(By.NAME, "_username").send_keys(EMAIL)
-    driver.find_element(By.NAME, "_password").send_keys(PASSWORD)
-    driver.find_element(By.ID, "login_go").click()
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "//a[@href='/logout']")))
-    print("Authentication successful")
-except Exception as e:
-    print("Login failed:", e)
-    with open("debug.html", "w", encoding="utf-8") as f:
-        f.write(driver.page_source)
-    raise
+    try:
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "_username")))
+        driver.find_element(By.NAME, "_username").send_keys(EMAIL)
+        driver.find_element(By.NAME, "_password").send_keys(PASSWORD)
+        driver.find_element(By.ID, "login_go").click()
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "//a[@href='/logout']")))
+        print("Authentication successful")
+    except Exception as e:
+        print("Login failed:", e)
+        with open("debug.html", "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+        raise
 
     print("Authentication successful")
     return driver
