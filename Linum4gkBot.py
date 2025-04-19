@@ -490,6 +490,8 @@ async def about_prediction_handler(update: Update, context: ContextTypes.DEFAULT
         await update.message.reply_text(f"⚠️ Ошибка: {e}")
 
 def setup_driver():
+    global EMAIL, PASSWORD
+    
     options = Options()
     #options.headless = True
     options.add_argument("--headless=new")
