@@ -67,7 +67,7 @@ def parse_tournament_data(tournament_id):
     driver.get(url)
     time.sleep(3)
 
-    rWait(driver, 10).until(
+    WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "teams_table_new"))
     )
 
